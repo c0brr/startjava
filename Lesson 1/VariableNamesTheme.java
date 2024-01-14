@@ -1,188 +1,189 @@
 public class VariableNamesTheme {
     public static void main(String[] args) {
         System.out.println("1. Разные переменные");
+
         // цифра
         byte digit = 1;
-        System.out.println(digit);
-        System.out.println();
+        System.out.println("\ndigit = 1");
+
         // сумма чисел
-        byte numbersSum = 25 + 31;
-        System.out.println(numbersSum);
-        System.out.println();
+        byte sumNumbers = 25;
+        System.out.println("\nsumNumbers = 25");
+
         // произведение цифр
-        int digitsMultiply = 8 * 8;
-        System.out.println(digitsMultiply);
-        System.out.println();
+        int multiplyDigits = 64;
+        System.out.println("\nmultiplyDigits = 64");
+
         // максимальное число
-        int numberMax = 1_000_000;
-        System.out.println(numberMax);
-        System.out.println();
+        int maxNumber = 1_000_000;
+        System.out.println("\nmaxNumber = 1_000_000");
+
         // количество десятков
-        short decadeAmount = 31_245;
-        System.out.println(decadeAmount);
-        System.out.println();
+        short amountDecades = 31_245;
+        System.out.println("\namountDecades = 31_245");
+
         // вес собаки
-        int dogWeight  = 15;
-        System.out.println(dogWeight);
-        System.out.println();
+        int weightDog  = 15;
+        System.out.println("\nweightDog = 15");
+
         // исходное число
         int initialNumber = 1_234_567_890;
-        System.out.println(initialNumber);
-        System.out.println();
+        System.out.println("\ninitialNumber = 1_234_567_890");
+
         // процент по вкладу
-        double depositPercent = 12.4;
-        System.out.println(depositPercent);
-        System.out.println();
+        double percentDeposit = 12.4;
+        System.out.println("\npercentDeposit = 12.4");
+
         // (переменная хранит символ) &
         char symb1 = '&';
-        System.out.println(symb1);
-        System.out.println();
+        System.out.println("\nsymb1 = '&'");
+
         // код ошибки
-        long errorCode = 465_533_345_111_123_535L;
-        System.out.println(errorCode);
-        System.out.println();
+        long codeError = 465_533_345_111_123_535L;
+        System.out.println("\ncodeError = 465_533_345_111_123_535L");
+
         // тип сообщения
         int messageType = 10;
-        System.out.println(messageType);
-        System.out.println();
+        System.out.println("\nmessageType = 10");
+
         // число нулей
-        int zerosAmount = 100;
-        System.out.println(zeroAmount);
-        System.out.println();
+        int amountZeros = 100;
+        System.out.println("\namountZeros = 100");
+
         // уникальное число
         int uniqueNumber = 55;
-        System.out.println(uniqueNumber);
-        System.out.println();
+        System.out.println("\nuniqueNumber = 55");
+
         // случайное число
         int randomNumber = 65;
-        System.out.println(randomNumber);
-        System.out.println();
+        System.out.println("\nrandomNumber = 65");
+
         // математическое выражение
-        int mathProblem = 5 + 9;
-        System.out.println(mathProblem);
-        System.out.println();
+        int mathProblem = 14;
+        System.out.println("\nmathProblem = 14");
+
         // выбор (чего-либо)
         int pick = 190;
-        System.out.println(pick);
-        System.out.println();
+        System.out.println("\npick = 190");
+
         // счет (в игре)
         int score = 14;
-        System.out.println(score);
-        System.out.println();
+        System.out.println("\nscore = 14");
+
         // максимальная длина (строки)
-        int lengthMax = 90;
-        System.out.println(lengthMax);
-        System.out.println();
+        int maxLength = 90;
+        System.out.println("\nmaxLength = 90");
+
         // пункт меню
         int menuPoint = 110;
-        System.out.println(menuPoint);
-        System.out.println();
+        System.out.println("\nmenuPoint = 110");
+
         // стоимость кофе на вынос
-        int coffeeToGoCost = 667;
-        System.out.println(coffeeToGoCost);
-        System.out.println();
+        int costCoffeeToGo = 667;
+        System.out.println("\ncostCoffeeToGo = 667");
+
         // дата начала (чего-либо)
         int startDate = 14;
-        System.out.println(startDate);
-        System.out.println();
+        System.out.println("\nstartDate = 14");
+
         // окончание диапазона
-        int rangeEnd = 777;
-        System.out.println(rangeEnd);
-        System.out.println();
+        int endRange = 777;
+        System.out.println("\nendRange = 777");
+
         // полное имя работника месяца
-        int employeeOfTheMonthFullName = 909;
-        System.out.println(employeeOfTheMonthFullName);
-        System.out.println();
+        int fullNameEmployeeMonth = 909;
+        System.out.println("\nfullNameEmployeeMonth = 909");
+
         // заголовок электронной книги
         int ebookTitle = 12_345;
-        System.out.println(ebookTitle);
-        System.out.println();
+        System.out.println("\nebookTitle = 12_345");
+
         // размер
         int size = 98;
-        System.out.println(size);
-        System.out.println();
+        System.out.println("\nsize = 98");
+
         // вместимость (чего-либо)
         int capacity = 197;
-        System.out.println(capacity);
-        System.out.println();
+        System.out.println("\ncapacity = 197");
+
         // счетчик
         int counter = 12_477;
-        System.out.println(counter);
-        System.out.println();
-        // путь до файла
-        int toFilePath = 104;
-        System.out.println(toFilePath);
-        System.out.println();
-        // количество чисел в каждой строке
-        int eachLineAmountNumbers = 11;
-        System.out.println(eachLineAmountNumbers);
-        System.out.println();
+        System.out.println("\ncounter = 12_477");
 
-        System.out.println("2. boolean-переменные");
+        // путь до файла
+        int pathFile = 104;
+        System.out.println("\npathFile = 104");
+
+        // количество чисел в каждой строке
+        int amountNumbersEachLine = 11;
+        System.out.println("\namountNumbersEachLine = 11");
+
+        System.out.println("\n2. boolean-переменные");
+
         // сотни равны?
-        boolean areHundredsEqual = true;
-        System.out.println(areHundredsEqual);
-        System.out.println();
+        boolean isHundredsEqual = true;
+        System.out.println("\nisHundredsEqual = true");
+
         // компьютер включен?
         boolean isComputerTurnedOn = true;
-        System.out.println(isComputerTurnedOn);
-        System.out.println();
+        System.out.println("\nisComputerTurnedOn = true");
+
         // есть равные цифры?
-        boolean areThereEqualNumbers = true;
-        System.out.println(areThereEqualNumbers);
-        System.out.println();
+        boolean hasEqualNumbers = true;
+        System.out.println("\nhasEqualNumbers = true");
+
         // (что-либо) создано?
         boolean isCreated = true;
-        System.out.println(isCreated);
-        System.out.println();
+        System.out.println("\nisCreated = true");
+
         // (что-либо) пустое?
         boolean isEmpty = true;
-        System.out.println(isEmpty);
-        System.out.println();
+        System.out.println("\nisEmpty = true");
+
         // (что-либо) активное?
         boolean isActive = true;
-        System.out.println(isActive);
-        System.out.println();
+        System.out.println("\nisActive = true");
+
         // новый?
         boolean isNew = true;
-        System.out.println(isNew);
-        System.out.println();
+        System.out.println("\nisNew = true");
+
         // электронная почта действительная?
         boolean isEmailValid = true;
-        System.out.println(isEmailValid);
-        System.out.println();
-        // имеются уникальные строки?
-        boolean areThereUniqueStrings = true;
-        System.out.println(areThereUniqueStrings);
-        System.out.println();
+        System.out.println("\nisEmailValid = true");
 
-        System.out.println("3. Аббревиатуры");
+        // имеются уникальные строки?
+        boolean hasUniqueStrings = true;
+        System.out.println("\nhasUniqueStrings = true");
+
+        System.out.println("\n3. Аббревиатуры");
+
         // старый universally unique identifier
-        int uuidOld = 5;
-        System.out.println(uuidOld);
-        System.out.println();
+        int oldUuid = 5;
+        System.out.println("\noldUuid = 5");
+
         // производитель оперативной памяти
         int ramManufacturer = 555;
-        System.out.println(ramManufacturer);
-        System.out.println();
+        System.out.println("\nramManufacturer = 555");
+
         // емкость жесткого диска
         int hddCapacity = 142;
-        System.out.println(hddCapacity);
-        System.out.println();
+        System.out.println("\nhddCapacity = 142");
+
         // протокол передачи гипертекста
         int http = 77;
-        System.out.println(http);
-        System.out.println();
+        System.out.println("\nhttp = 77");
+
         // сокращенный uniform resource locator
         int shortedUrl = 12;
-        System.out.println(shortedUrl);
-        System.out.println();
+        System.out.println("\nshortedUrl = 12");
+
         // новый идентификатор клиента
         int newClientID = 5;
-        System.out.println(newClientID);
-        System.out.println();
+        System.out.println("\nnewClientID = 5");
+
         // кодировка american standard code for information interchange
         int asciiEncoding  = 67;
-        System.out.println(asciiEncoding);
+        System.out.println("\nasciiEncoding = 67");
     }
 }
