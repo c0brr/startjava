@@ -11,8 +11,8 @@ public class VariableNamesTheme {
         System.out.println("\nsumNumbers = 25");
 
         // произведение цифр
-        int multiplyDigits = 64;
-        System.out.println("\nmultiplyDigits = 64");
+        int multiplicationDigits = 64;
+        System.out.println("\nmultiplicationDigits = 64");
 
         // максимальное число
         int maxNumber = 1_000_000;
@@ -23,8 +23,8 @@ public class VariableNamesTheme {
         System.out.println("\namountDecades = 31_245");
 
         // вес собаки
-        int weightDog  = 15;
-        System.out.println("\nweightDog = 15");
+        int dogWeight  = 15;
+        System.out.println("\ndogWeight = 15");
 
         // исходное число
         int initialNumber = 1_234_567_890;
@@ -35,12 +35,12 @@ public class VariableNamesTheme {
         System.out.println("\npercentDeposit = 12.4");
 
         // (переменная хранит символ) &
-        char symb1 = '&';
-        System.out.println("\nsymb1 = '&'");
+        char ampersand = '&';
+        System.out.println("\nampersand = '&'");
 
         // код ошибки
-        long codeError = 465_533_345_111_123_535L;
-        System.out.println("\ncodeError = 465_533_345_111_123_535L");
+        long errorCode = 465_533_345_111_123_535L;
+        System.out.println("\nerrorCode = 465_533_345_111_123_535L");
 
         // тип сообщения
         int messageType = 10;
@@ -59,8 +59,8 @@ public class VariableNamesTheme {
         System.out.println("\nrandomNumber = 65");
 
         // математическое выражение
-        int mathProblem = 14;
-        System.out.println("\nmathProblem = 14");
+        int mathExpression = 14;
+        System.out.println("\nmathExpression = 14");
 
         // выбор (чего-либо)
         int pick = 190;
@@ -179,8 +179,8 @@ public class VariableNamesTheme {
         System.out.println("\nshortedUrl = 12");
 
         // новый идентификатор клиента
-        int newClientID = 5;
-        System.out.println("\nnewClientID = 5");
+        int newClientId = 5;
+        System.out.println("\nnewClientId = 5");
 
         // кодировка american standard code for information interchange
         int asciiEncoding  = 67;
