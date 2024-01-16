@@ -42,10 +42,14 @@ public class VariablesTheme {
         short maxShortNumb = 32_767;
         int maxIntNumb = 2_147_483_647;
         long maxLongNumb = 9_223_372_036_854_775_807L;
-        System.out.println("Вывод для byte: \n" + maxByteNumb + "\n" + ++maxByteNumb + "\n" + --maxByteNumb + "\n");
-        System.out.println("Вывод для short: \n" + maxShortNumb + "\n" + ++maxShortNumb + "\n" + --maxShortNumb + "\n");
-        System.out.println("Вывод для int: \n" + maxIntNumb + "\n" + ++maxIntNumb + "\n" + --maxIntNumb + "\n");
-        System.out.println("Вывод для long: \n" + maxLongNumb + "\n" + ++maxLongNumb + "\n" + --maxLongNumb + "\n");
+        System.out.println("Вывод для byte: \n" + maxByteNumb + "\n" + ++maxByteNumb + "\n" + 
+                --maxByteNumb + "\n");
+        System.out.println("Вывод для short: \n" + maxShortNumb + "\n" + ++maxShortNumb + "\n" + 
+                --maxShortNumb + "\n");
+        System.out.println("Вывод для int: \n" + maxIntNumb + "\n" + ++maxIntNumb + "\n" + 
+                --maxIntNumb + "\n");
+        System.out.println("Вывод для long: \n" + maxLongNumb + "\n" + ++maxLongNumb + "\n" + 
+                --maxLongNumb + "\n");
 
         System.out.println("\n5. Перестановка значений переменных\n");
 
@@ -101,9 +105,9 @@ public class VariablesTheme {
         int numberDecades = number % 100 / 10;
         int numberUnits = number % 100 % 10;
         System.out.println("Число " + number + " содержит:\n" + "  сотен - " + numberHundreds + 
-            "\n  десятков - " + numberDecades + "\n  единиц - " + numberUnits + "\nСумма его цифр = " + 
-            (numberHundreds + numberDecades + numberUnits) + "\nПроизведение = " + numberHundreds * 
-            numberDecades * numberUnits);
+                "\n  десятков - " + numberDecades + "\n  единиц - " + numberUnits + "\nСумма его цифр = " + 
+                (numberHundreds + numberDecades + numberUnits) + "\nПроизведение = " + numberHundreds * 
+                numberDecades * numberUnits);
 
         System.out.println("\n9. Вывод времени\n");
 
