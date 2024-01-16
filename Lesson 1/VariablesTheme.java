@@ -93,8 +93,8 @@ public class VariablesTheme {
         char leftParenthesis = '(';
         char rightParenthesis = ')';
         System.out.println("    " + slash + backslash + "\n" + "   " + slash + "  " + 
-                backslash + "\n" + "  " + slash + underscore + leftParenthesis + " " + 
-                rightParenthesis + backslash + "\n" + " " + slash + "      " + 
+                backslash + "\n" + "  " + slash + underscore + leftParenthesis + 
+                " " + rightParenthesis + backslash + "\n" + " " + slash + "      " + 
                 backslash + "\n" + slash + underscore + underscore + underscore + 
                 underscore + slash + backslash + underscore + underscore + backslash);
 
