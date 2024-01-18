@@ -23,12 +23,13 @@ public class VariablesTheme {
 
         int penCost = 100;
         int bookCost = 200;
-        int penAndBookTotalCost = penCost + bookCost;
+        int productsTotalCost = penCost + bookCost;
         int discountPercent = 11;
-        System.out.println("Общая стоимость товаров без скидки, руб.: " + penAndBookTotalCost);
-        System.out.println("Сумма скидки, руб.: " + penAndBookTotalCost / 100 * discountPercent);
+        int discountAmount = productsTotalCost / 100 * discountPercent;
+        System.out.println("Общая стоимость товаров без скидки, руб.: " + productsTotalCost);
+        System.out.println("Сумма скидки, руб.: " + discountAmount);
         System.out.println("Общая стоимость товаров со скидкой, руб.: " + 
-                (penAndBookTotalCost - penAndBookTotalCost / 100 * discountPercent));
+                (productsTotalCost - discountAmount));
 
         System.out.println("\n3. Вывод слова JAVA\n");
 
@@ -54,26 +55,26 @@ public class VariablesTheme {
 
         System.out.println("\n5. Перестановка значений переменных\n");
 
-        int numb1 = 2;
-        int numb2 = 5;
-        int numb3 = numb1;
+        int num1 = 2;
+        int num2 = 5;
+        int num3 = num1;
         System.out.println("Перестановка с помощью третьей переменной\nИсходные значения переменных:\n" + 
-                numb1 + " " + numb2);
-        numb1 = numb2;
-        numb2 = numb3;
-        System.out.println("Новые значения переменных:\n" + numb1 + " " + numb2 + 
+                num1 + " " + num2);
+        num1 = num2;
+        num2 = num3;
+        System.out.println("Новые значения переменных:\n" + num1 + " " + num2 + 
                 "\n\nПерестановка с помощью арифметических операций\nИсходные значения переменных:\n" + 
-                numb1 + " " + numb2);
-        numb1 += numb2;
-        numb2 = numb1 - numb2;
-        numb1 -= numb2;
-        System.out.println("Новые значения переменных:\n" + numb1 + " " + numb2 + 
+                num1 + " " + num2);
+        num1 += num2;
+        num2 = num1 - num2;
+        num1 -= num2;
+        System.out.println("Новые значения переменных:\n" + num1 + " " + num2 + 
                 "\n\nПерестановка с помощью арифметических операций\nИсходные значения переменных:\n" + 
-                numb1 + " " + numb2);
-        numb1 ^= numb2;
-        numb2 ^= numb1;
-        numb1 ^= numb2;
-        System.out.println("Новые значения переменных:\n" + numb1 + " " + numb2);
+                num1 + " " + num2);
+        num1 ^= num2;
+        num2 ^= num1;
+        num1 ^= num2;
+        System.out.println("Новые значения переменных:\n" + num1 + " " + num2);
 
         System.out.println("\n6. Вывод символов и их кодов\n");
 
@@ -82,16 +83,11 @@ public class VariablesTheme {
         char atSign = '@';
         char verticalBar = '|';
         char tilde = '~';
-        int dollarCode = 36;
-        int asteriskCode = 42;
-        int atSignCode = 64;
-        int verticalBarCode = 124;
-        int tildeCode = 126;
-        System.out.println(dollarCode + "   " + dollar);
-        System.out.println(asteriskCode + "   " + asterisk);
-        System.out.println(atSignCode + "   " + atSign);
-        System.out.println(verticalBarCode + "  " + verticalBar);
-        System.out.println(tildeCode + "  " + tilde);
+        System.out.println((int) dollar + "   " + dollar);
+        System.out.println((int) asterisk + "   " + asterisk);
+        System.out.println((int) atSign + "   " + atSign);
+        System.out.println((int) verticalBar + "  " + verticalBar);
+        System.out.println((int) tilde + "  " + tilde);
 
         System.out.println("\n7. Вывод в консоль ASCII-арт Дюка\n");
 
@@ -109,14 +105,16 @@ public class VariablesTheme {
 
         System.out.println("\n8. Вывод количества сотен, десятков и единиц числа\n");
 
-        int numb4 = 123;
-        int numb4Hundreds = numb4 / 100;
-        int numb4Tens = numb4 / 10 % 10;
-        int numb4Ones = numb4 % 10;
-        System.out.println("Число " + numb4 + " содержит:\n" + "  сотен - " + numb4Hundreds + 
-                "\n  десятков - " + numb4Tens + "\n  единиц - " + numb4Ones + "\nСумма его цифр = " + 
-                (numb4Hundreds + numb4Tens + numb4Ones) + "\nПроизведение = " + numb4Hundreds * 
-                numb4Tens * numb4Ones);
+        int num4 = 123;
+        int num4Hundreds = num4 / 100;
+        int num4Tens = num4 / 10 % 10;
+        int num4Ones = num4 % 10;
+        System.out.println("Число " + num4 + " содержит:" + 
+                "\n  сотен - " + num4Hundreds + 
+                "\n  десятков - " + num4Tens + 
+                "\n  единиц - " + num4Ones + 
+                "\nСумма его цифр = " + (num4Hundreds + num4Tens + num4Ones) + 
+                "\nПроизведение = " + num4Hundreds * num4Tens * num4Ones);
 
         System.out.println("\n9. Вывод времени\n");
 
