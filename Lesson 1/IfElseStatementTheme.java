@@ -73,24 +73,21 @@ public class IfElseStatementTheme {
         int num5Hundreds = num5 / 100;
         int num5Tens = num5 / 10 % 10;
         int num5Ones = num5 % 10;
-        if (num4Hundreds != num5Hundreds) {
-            if (num4Tens != num5Tens) {
-                if (num4Ones != num5Ones) {
-                    System.out.println("В разрядах чисел " + num4 + " и " + num5 + " нет одинаковых цифр");
-                }
+        if (num4Hundreds != num5Hundreds && num4Tens != num5Tens && num4Ones != num5Ones) {
+            System.out.println("В разрядах чисел " + num4 + " и " + num5 + " нет одинаковых цифр");
+        } else {
+            if (num4Hundreds == num5Hundreds) {
+                System.out.println("В разряде сотен чисел " + num4 + " и " + num5 +
+                        " есть одинаковая цифра " + num4Hundreds);
             }
-        }
-        if (num4Hundreds == num5Hundreds) {
-            System.out.println("В раязряде сотен чисел " + num4 + " и " + num5 + 
-                    " есть одинаковая цифра " + num4Hundreds);
-        }
-        if (num4Tens == num5Tens) {
-            System.out.println("В разряде десятков чисел " + num4 + " и " + num5 + 
-                    " есть одинаковая цифра " + num4Tens);
-        }
-        if (num4Ones == num5Ones) {
-            System.out.println("В разряде единиц чисел " + num4 + " и " + num5 + 
-                    " есть одинаковая цифра " + num4Ones);
+            if (num4Tens == num5Tens) {
+                System.out.println("В разряде десятков чисел " + num4 + " и " + num5 + 
+                        " есть одинаковая цифра " + num4Tens);
+            }
+            if (num4Ones == num5Ones) {
+                System.out.println("В разряде единиц чисел " + num4 + " и " + num5 + 
+                        " есть одинаковая цифра " + num4Ones);
+            }
         }
 
         System.out.println("\n5. Определение символа по его коду\n");
