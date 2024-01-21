@@ -145,11 +145,11 @@ public class CyclesTheme {
         System.out.println("\n8. Проверка, является ли число палиндромом");
         int eighthTaskNum = 1_234_321;
         System.out.print("Число " + eighthTaskNum);
-        int multiplier = 1_000_000;
+        int divider = 1_000_000;
         for (int i = 1; i <= 3; i++) {
-            if (eighthTaskNum % 10 == eighthTaskNum / multiplier) {
-                eighthTaskNum = eighthTaskNum % multiplier / 10;
-                multiplier /= 100;
+            if (eighthTaskNum % 10 == eighthTaskNum / divider) {
+                eighthTaskNum = eighthTaskNum % divider / 10;
+                divider /= 100;
                 if (eighthTaskNum > 99) {
                     continue;
                 } else {
