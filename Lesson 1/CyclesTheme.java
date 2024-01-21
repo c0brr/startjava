@@ -127,7 +127,7 @@ public class CyclesTheme {
                 System.out.printf("%s", "DECIMAL");
             } else if (i == 2) {
                 System.out.printf("%13s", "CHARACTER");
-            } else if (i == 3) {
+            } else {
                 System.out.printf("%15s\n", "DESCRIPTION");
             }
         }
