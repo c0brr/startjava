@@ -25,7 +25,7 @@ public class CyclesTheme {
         int min = num1;
         if (num2 >= num1) {
             max = num2;
-        } else {
+        } else if (num2 <= num1) {
             min = num2;
         }
         if (num3 >= max) {
@@ -160,20 +160,24 @@ public class CyclesTheme {
 
         System.out.println("\n10. Отображение таблицы умножения Пифагора");
         System.out.printf("%12s%10s\n", "ТАБЛИЦА", "ПИФАГОРА");
-        for (int i = 0; i <= 1; i++) {
-            for (int j = 0; j <= 9; j++) {
-                if (i == 0 && j == 0) {
-                    System.out.print("    ");
-                } else if (j == 1) {
-                    System.out.print('|');
-                } else if (i == 1) {
-                    System.out.printf("%c%c%c%c", '-', '-', '-', '-');
-                } else {
-                    System.out.printf("%3d ", j);
-                }
+        for (int i = 0; i <= 9; i++) {
+            if (i == 0) {
+                System.out.print("    ");
+            } else if (i == 1) {
+                System.out.print('|');
+            } else {
+                System.out.printf("%3d ", i);
             }
-            System.out.println();
         }
+        System.out.println();
+        for (int i = 0; i <= 9; i++) {
+            if (i == 1) {
+                System.out.print('|');
+            } else {
+                System.out.printf("%c%c%c%c", '-', '-', '-', '-');
+            }
+        }
+        System.out.println();
         for (int i = 2; i <= 9; i++) {
            for (int j = 0; j <= 9; j++) {
                 if (j == 0) {
