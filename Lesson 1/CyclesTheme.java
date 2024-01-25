@@ -23,14 +23,14 @@ public class CyclesTheme {
         int num3 = -1;
         int max = num1;
         int min = num1;
-        if (num2 >= num1) {
+        if (num2 > num1) {
             max = num2;
-        } else if (num2 <= num1) {
+        } else if (num2 < num1) {
             min = num2;
         }
-        if (num3 >= max) {
+        if (num3 > max) {
             max = num3;
-        } else if (num3 <= min) {
+        } else if (num3 < min) {
             min = num3;
         }
         for (int i = max - 1; i > min; i--) {
@@ -129,14 +129,10 @@ public class CyclesTheme {
 
         System.out.println("\n8. Проверка, является ли число палиндромом");
         originNum = 1_234_321;
-        int multiplier = 1;
-        for (int i = originNum; i > 9; i /= 10) {
-            multiplier *= 10;
-        }
-        int reverseNum = 0;
         copyOriginNum = originNum;
-        for ( ; copyOriginNum > 0; copyOriginNum /= 10, multiplier /= 10) {
-            reverseNum += copyOriginNum % 10 * multiplier;
+        int reverseNum = 0;
+        for ( ; copyOriginNum > 0; copyOriginNum /= 10) {
+            reverseNum = reverseNum * 10 + copyOriginNum % 10;
         }
         System.out.print("Число " + originNum);
         System.out.print(reverseNum == originNum ? " является " : " не является ");
