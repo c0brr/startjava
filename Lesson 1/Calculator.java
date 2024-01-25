@@ -3,22 +3,23 @@ public class Calculator {
         int num1 = 27;
         int num2 = 3;
         char operation = '^';
+        int result = 0;
         if (operation == '+') {
-            System.out.println(num1 + " " + operation + " " + num2 + " = " + (num1 + num2));
+            result = num1 + num2;
         } else if (operation == '-') {
-            System.out.println(num1 + " " + operation + " " + num2 + " = " + (num1 - num2));
+            result = num1 - num2;
         } else if (operation == '*') {
-            System.out.println(num1 + " " + operation + " " + num2 + " = " + (num1 * num2));
+            result = num1 * num2;
         } else if (operation == '/') {
-            System.out.println(num1 + " " + operation + " " + num2 + " = " + (num1 / num2));
+            result = num1 / num2;
         } else if (operation == '%') {
-            System.out.println(num1 + " " + operation + " " + num2 + " = " + (num1 % num2));
+            result = num1 % num2;
         } else if (operation == '^') {
-            int copyNum1 = num1;
+            result = num1;
             for (int i = 1; i < num2; i++) {
-                copyNum1 *= num1;
+                result *= num1;
             }
-            System.out.println(num1 + " " + operation + " " + num2 + " = " + copyNum1);
         }
+        System.out.println(num1 + " " + operation + " " + num2 + " = " + result);
     }
 }
