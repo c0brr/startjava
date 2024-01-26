@@ -6,22 +6,22 @@ public class Person {
     int age = 27;
 
     void walk() {
-    System.out.println(name + " идет...");
+    System.out.println(name + " is walking...");
     }
 
     void sit() {
-    System.out.println(name + " сидит...");
+    System.out.println(name + " is sitting...");
     }
 
     void run() {
-    System.out.println(name + " бежит...");
+    System.out.println(name + " is running...");
     }
 
     void talk() {
-    System.out.println(name + " говорит...");
+    System.out.println(name + " is talking...");
     }
 
     void learnJava() {
-    System.out.println(name + " учит Java...");
+    System.out.println(name + " learns Java.");
     }
 }
