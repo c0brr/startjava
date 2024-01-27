@@ -24,13 +24,4 @@ class Wolf {
     void hunt() {
         System.out.println(name + " охотится...");
     }
-
-    void getWolfInfo() {
-        System.out.println("Волк" + 
-                "\nПол: " + gender + 
-                "\nКличка: " + name + 
-                "\nОкрас: " + color + 
-                "\nВес, кг: " + weight + 
-                "\nВозраст, лет: " + age);
-    }
 }
