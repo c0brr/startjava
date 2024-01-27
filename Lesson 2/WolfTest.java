@@ -7,7 +7,12 @@ public class WolfTest {
         wolf.weight = 56.8;
         wolf.age = 8;
 
-        wolf.getWolfInfo();
+        System.out.println("Волк" + 
+        "\nПол: " + wolf.gender + 
+        "\nКличка: " + wolf.name + 
+        "\nОкрас: " + wolf.color + 
+        "\nВес, кг: " + wolf.weight + 
+        "\nВозраст, лет: " + wolf.age);
         System.out.println();
 
         wolf.run();
