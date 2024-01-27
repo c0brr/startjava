@@ -8,11 +8,11 @@ public class WolfTest {
         wolf.age = 8;
 
         System.out.println("Волк" + 
-        "\nПол: " + wolf.gender + 
-        "\nКличка: " + wolf.name + 
-        "\nОкрас: " + wolf.color + 
-        "\nВес, кг: " + wolf.weight + 
-        "\nВозраст, лет: " + wolf.age);
+                "\nПол: " + wolf.gender + 
+                "\nКличка: " + wolf.name + 
+                "\nОкрас: " + wolf.color + 
+                "\nВес, кг: " + wolf.weight + 
+                "\nВозраст, лет: " + wolf.age);
         System.out.println();
 
         wolf.run();
