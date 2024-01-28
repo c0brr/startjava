@@ -2,6 +2,8 @@ class Calculator {
     private int num1;
     private int num2;
     private char operation;
+    private int result;
+    private boolean isOperationAvalible = true;
 
     public void setNum1(int num1) {
         this.num1 = num1;
@@ -15,32 +17,35 @@ class Calculator {
         this.operation = operation;
     }
 
-    public void getResult() {
+    public void calculate() {
         switch (operation) {
             case '+': 
-                System.out.println("\nРезультат: " + (num1 + num2));
+                result = num1 + num2;
                 break;
             case '-': 
-                System.out.println("\nРезультат: " + (num1 - num2));
+                result = num1 - num2;
                 break;
             case '*':
-                System.out.println("\nРезультат: " + (num1 * num2));
+                result = num1 * num2;
                 break;
             case '/':
-                System.out.println("\nРезультат: " + (num1 / num2));
+                result = num1 / num2;
                 break;
             case '%':
-                System.out.println("\nРезультат: " + (num1 % num2));
+                result = num1 % num2;
                 break;
             case '^':
-                int result = num1;
+                result = num1;
                 for (int i = 1; i < num2; i++) {
                     result *= num1;
                 }
-                System.out.println("\nРезультат: " + result);
                 break;
             default:
                 System.out.println("\nДанная операция не поддерживается");
+                isOperationAvalible = false;
+        }
+        if (isOperationAvalible == true) {
+            System.out.println("\nРезультат: " + result);
         }
         System.out.println();
     }
