@@ -41,11 +41,13 @@ class Calculator {
                 }
                 break;
             default:
-                System.out.println("\nДанная операция не поддерживается");
                 isOperationAvalible = false;
         }
-        if (isOperationAvalible == true) {
+        if (isOperationAvalible) {
             System.out.println("\nРезультат: " + result);
+        } else {
+            System.out.println("\nДанная операция не поддерживается");
+            isOperationAvalible = true;
         }
         System.out.println();
     }
