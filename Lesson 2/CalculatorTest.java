@@ -16,11 +16,10 @@ public class CalculatorTest {
             calculator.calculate();
             scanner.nextLine();
 
-            answer = "";
-            while (!answer.equals("yes") && !answer.equals("no")) {
+            do {
                 System.out.print("Хотите продолжить вычисления? [yes/no]: ");
                 answer = scanner.nextLine();
-            }
+            } while (!answer.equals("yes") && !answer.equals("no"));
         }
         scanner.close();
     }
