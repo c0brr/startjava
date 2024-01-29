@@ -140,7 +140,7 @@ class Jaeger {
         return kaijuKilled;
     }
 
-    // Дейсвтия роботов
+    // Действия роботов
     public boolean drift() {
         System.out.println("Drift activated");
         return true;
@@ -163,14 +163,14 @@ class Jaeger {
     }
 
     public void startMove() {
-    System.out.println(modelName + " is moving");
-    currentSpeed = 1;
-    System.out.println("Current speed is " + currentSpeed);
+        System.out.println(modelName + " is moving");
+        currentSpeed = 1;
+        System.out.println("Current speed is " + currentSpeed);
     }
 
     public void stopMove() {
-    System.out.println(modelName + " is stoping");
-    currentSpeed = minSpeed;
+        System.out.println(modelName + " is stoping");
+        currentSpeed = minSpeed;
     }
 
     public void speedUp(int speed) {
