@@ -2,8 +2,6 @@ class Calculator {
     private int num1;
     private int num2;
     private char operation;
-    private int result;
-    private boolean isOperationAvalible = true;
 
     public void setNum1(int num1) {
         this.num1 = num1;
@@ -18,6 +16,7 @@ class Calculator {
     }
 
     public void calculate() {
+        int result;
         switch (operation) {
             case '+': 
                 result = num1 + num2;
@@ -41,14 +40,10 @@ class Calculator {
                 }
                 break;
             default:
-                isOperationAvalible = false;
+                System.out.println("\nДанная операция не поддерживается\n");
+                return;
         }
-        if (isOperationAvalible) {
-            System.out.println("\nРезультат: " + result);
-        } else {
-            System.out.println("\nДанная операция не поддерживается");
-            isOperationAvalible = true;
-        }
+        System.out.println("\nРезультат: " + result);
         System.out.println();
     }
 }
