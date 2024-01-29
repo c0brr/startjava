@@ -42,7 +42,7 @@ public class JaegerTest {
 
         // Создание второго егеря
         Jaeger jaeger2 = new Jaeger("Horizon Brave", "Mark-1", "China", 72.54f, 7.89f, 4, 6,
-                 8, "December 22, 2015", "Headstrong brawler", "Cryo-cannon", 2);
+                8, "December 22, 2015", "Headstrong brawler", "Cryo-cannon", 2);
 
         // Инфо о втором егере
         System.out.println(jaeger2.getInfo());
