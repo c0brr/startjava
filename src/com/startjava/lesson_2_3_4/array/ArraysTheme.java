@@ -94,14 +94,14 @@ public class ArraysTheme {
         for (int i = 0; i < length; i++) {
             boolean isUnique = false;
             while (!isUnique) {
-                int randomNum = random.nextInt(60, 100);
+                int randomSegmentNum = random.nextInt(60, 100);
                 for (int j = 0; j < length; j++) {
-                    if (randomNum == uniqueNums[j] && i != j) {
+                    if (randomSegmentNum == uniqueNums[j] && i != j) {
                         break;
                     }
                     if (j == length - 1) {
                         isUnique = true;
-                        uniqueNums[i] = randomNum;
+                        uniqueNums[i] = randomSegmentNum;
                     }
                 }
             }
