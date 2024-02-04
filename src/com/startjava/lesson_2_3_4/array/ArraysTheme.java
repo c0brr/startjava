@@ -9,7 +9,7 @@ public class ArraysTheme {
         multiplyArrayElements();
         deleteArrayElements();
         displayAlphabetLadder();
-        fillArrayUniqeNumbers();
+        fillArrayUniqeNums();
     }
 
     public static void reverseArray() {
@@ -18,7 +18,7 @@ public class ArraysTheme {
         int length = nums.length;
         int[] reverseNums = new int[length];
         System.out.print("До реверса: [");
-        printArray(nums, length);
+        printArray1(nums, length);
 
         int index = length - 1;
         for (int num : nums) {
@@ -32,7 +32,7 @@ public class ArraysTheme {
         }
 
         System.out.print("\nПосле реверса: [");
-        printArray(nums, length);
+        printArray1(nums, length);
     }
 
     public static void multiplyArrayElements() {
@@ -57,19 +57,11 @@ public class ArraysTheme {
         for (int i = 0; i < length; i++) {
             nums[i] = random.nextFloat();
         }
+        float middleIndexNum = nums[length / 2];
 
         System.out.print("Исходный массив: \n[");
-        int numCounter = 0;
-        for (float num: nums) {
-            numCounter++;
-            System.out.printf("%.3f", num);
-            System.out.print(num == nums[length - 1] ? "]" : ", ");
-            if (numCounter % 8 == 0) {
-                System.out.println();
-            }
-        }
+        printArray2(nums, length, middleIndexNum);
 
-        float middleIndexNum = nums[length / 2];
         int amountDeletedCells = 0;
         System.out.print("\n\nИзмененный массив: \n[");
         for (int i = 0; i < length; i++) {
@@ -77,18 +69,8 @@ public class ArraysTheme {
                 nums[i] = 0.0f;
                 amountDeletedCells++;
             }
-            System.out.printf("%.3f", nums[i]);
-            if (i != length - 1) {
-                System.out.print(", ");
-            }
-            if (i == length / 2) {
-                System.out.println();
-            }
-            if (i == length - 1) {
-                System.out.print("]");
-            }
         }
-
+        printArray2(nums, length, middleIndexNum);
         System.out.println("\n\nКоличество обнуленных ячеек: " + amountDeletedCells);
     }
 
@@ -107,7 +89,7 @@ public class ArraysTheme {
         }
     }
 
-    public static void fillArrayUniqeNumbers() {
+    public static void fillArrayUniqeNums() {
         System.out.println("\n5. Заполнение массива уникальными числами");
         int[] nums = new int[30];
         int length = nums.length;
@@ -139,10 +121,20 @@ public class ArraysTheme {
         }
     }
 
-    private static void printArray(int[] nums, int length) {
+    private static void printArray1(int[] nums, int length) {
         for (int num: nums) {
             System.out.print(num);
             System.out.print(num == nums[length - 1] ? "]" : ", ");
+        }
+    }
+
+    private static void printArray2(float[] nums, int length, float middleIndexNum) {
+        for (int i = 0; i < length; i++) {
+            System.out.printf("%.3f", nums[i]);
+            System.out.print(i == length - 1 ? "]" : ", ");
+            if (nums[i] == middleIndexNum) {
+                System.out.println();
+            }
         }
     }
 }
