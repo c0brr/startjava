@@ -7,21 +7,20 @@ public class CalculatorTest {
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
         String answer = "yes";
+        String question = "Хотите продолжить вычисления? [yes/no]: ";
 
-        while (answer.equals("yes")) {
-            System.out.println("Введите первое число: ");
-            calculator.setNum1(scanner.nextInt());
-            System.out.println("Введите знак математической операции: ");
-            calculator.setOperation(scanner.next().charAt(0));
-            System.out.println("Введите второе число: ");
-            calculator.setNum2(scanner.nextInt());
-            calculator.calculate();
-            scanner.nextLine();
-
-            do {
-                System.out.print("Хотите продолжить вычисления? [yes/no]: ");
+        while (true) {
+            if (answer.equals("yes")) {
+                System.out.print("Введите математическое выражение: ");
+                calculator.calculate(scanner.nextLine());
+                System.out.print(question);
                 answer = scanner.nextLine();
-            } while (!answer.equals("yes") && !answer.equals("no"));
+            } else if (answer.equals("no")) {
+                break;
+            } else {
+                System.out.print(question);
+                answer = scanner.nextLine();
+            }
         }
         scanner.close();
     }

@@ -3,49 +3,39 @@ package com.startjava.lesson_2_3_4.calculator;
 class Calculator {
     private int num1;
     private int num2;
-    private char operation;
+    private String operation;
 
-    public void setNum1(int num1) {
-        this.num1 = num1;
-    }
-
-    public void setNum2(int num2) {
-        this.num2 = num2;
-    }
-
-    public void setOperation(char operation) {
-        this.operation = operation;
-    }
-
-    public void calculate() {
-        int result;
+    public double calculate(String mathExpression) {
+        String[] mathExpressionArray = mathExpression.split(" ");
+        num1 = Integer.parseInt(mathExpressionArray[0]);
+        num2 = Integer.parseInt(mathExpressionArray[2]);
+        operation = mathExpressionArray[1];
+        double result;
         switch (operation) {
-            case '+': 
+            case "+":
                 result = num1 + num2;
                 break;
-            case '-': 
+            case "-":
                 result = num1 - num2;
                 break;
-            case '*':
+            case "*":
                 result = num1 * num2;
                 break;
-            case '/':
-                result = num1 / num2;
+            case "/":
+                result = (double) num1 / num2;
                 break;
-            case '%':
+            case "%":
                 result = num1 % num2;
                 break;
-            case '^':
-                result = num1;
-                for (int i = 1; i < num2; i++) {
-                    result *= num1;
-                }
+            case "^":
+                result = Math.pow(num1, num2);
                 break;
             default:
-                System.out.println("\nДанная операция не поддерживается\n");
-                return;
+                System.out.println("Ошибка: знак " + operation + " не поддерживается");
+                return Double.MIN_VALUE;
         }
-        System.out.println("\nРезультат: " + result);
-        System.out.println();
+        System.out.print(num1 + " " + operation + " " + num2 + " = ");
+        System.out.print(result - (int) result == 0 ? (int) result + "\n" : String.format("%.3f\n", result));
+        return result;
     }
 }
