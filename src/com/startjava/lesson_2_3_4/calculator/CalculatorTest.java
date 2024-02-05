@@ -7,19 +7,25 @@ public class CalculatorTest {
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
         String answer = "yes";
-        String question = "Хотите продолжить вычисления? [yes/no]: ";
 
-        while (true) {
+        while (!answer.equals("no")) {
+            if (!answer.equals("yes")) {
+                System.out.print("Хотите продолжить вычисления? [yes/no]: ");
+                answer = scanner.nextLine();
+            }
             if (answer.equals("yes")) {
                 System.out.print("Введите математическое выражение: ");
-                calculator.calculate(scanner.nextLine());
-                System.out.print(question);
-                answer = scanner.nextLine();
-            } else if (answer.equals("no")) {
-                break;
-            } else {
-                System.out.print(question);
-                answer = scanner.nextLine();
+                double result = calculator.calculate(scanner.nextLine());
+                if (result == Double.MIN_VALUE) {
+                    System.out.println("Ошибка: знак " + calculator.getOperation() + " не поддерживается");
+                } else {
+                    System.out.print(calculator.getNum1() +
+                            " " + calculator.getOperation() +
+                            " " + calculator.getNum2() + " = ");
+                    System.out.print(result - (int) result == 0 ?
+                            (int) result + "\n" : String.format("%.3f\n", result));
+                }
+                answer = "";
             }
         }
         scanner.close();

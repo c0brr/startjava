@@ -5,37 +5,38 @@ class Calculator {
     private int num2;
     private String operation;
 
+    public int getNum1() {
+        return num1;
+    }
+
+    public int getNum2() {
+        return  num2;
+    }
+
+    public String getOperation() {
+        return operation;
+    }
+
     public double calculate(String mathExpression) {
-        String[] mathExpressionArray = mathExpression.split(" ");
-        num1 = Integer.parseInt(mathExpressionArray[0]);
-        num2 = Integer.parseInt(mathExpressionArray[2]);
-        operation = mathExpressionArray[1];
-        double result;
+        String[] elements = mathExpression.split(" ");
+        num1 = Integer.parseInt(elements[0]);
+        num2 = Integer.parseInt(elements[2]);
+        operation = elements[1];
         switch (operation) {
             case "+":
-                result = num1 + num2;
-                break;
+                return num1 + num2;
             case "-":
-                result = num1 - num2;
-                break;
+                return num1 - num2;
             case "*":
-                result = num1 * num2;
-                break;
+                return num1 * num2;
             case "/":
-                result = (double) num1 / num2;
-                break;
+                return (double) num1 / num2;
             case "%":
-                result = num1 % num2;
-                break;
+                return num1 % num2;
             case "^":
-                result = Math.pow(num1, num2);
-                break;
+                return Math.pow(num1, num2);
             default:
-                System.out.println("Ошибка: знак " + operation + " не поддерживается");
                 return Double.MIN_VALUE;
         }
-        System.out.print(num1 + " " + operation + " " + num2 + " = ");
-        System.out.print(result - (int) result == 0 ? (int) result + "\n" : String.format("%.3f\n", result));
-        return result;
     }
 }
