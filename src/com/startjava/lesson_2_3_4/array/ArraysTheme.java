@@ -14,73 +14,73 @@ public class ArraysTheme {
 
     private static void reverseArray() {
         System.out.println("1. Реверс значений массива");
-        int[] segmentNums = {5, 2, 6, 1, 3, 7, 4};
-        int length = segmentNums.length;
+        int[] nums = {5, 2, 6, 1, 3, 7, 4};
+        int length = nums.length;
         System.out.print("До реверса: [");
-        printArray(segmentNums);
+        printArray(nums);
 
-        for (int i = 0, j = length - 1; i < 3; i++, j--) {
-            int storedNum = segmentNums[i];
-            segmentNums[i] = segmentNums[j];
-            segmentNums[j] = storedNum;
+        for (int i = 0; i <= length / 2; i++) {
+            int swap = nums[i];
+            nums[i] = nums[--length];
+            nums[length] = swap;
         }
 
         System.out.print("\nПосле реверса: [");
-        printArray(segmentNums);
+        printArray(nums);
     }
 
     private static void multiplyArrayElements() {
         System.out.println("\n\n2. Произведение элементов массива");
-        int[] segmentNums = new int[10];
-        int length = segmentNums.length;
+        int[] multipliers = new int[10];
+        int length = multipliers.length;
         for (int i = 0; i < length; i++) {
-            segmentNums[i] = i;
+            multipliers[i] = i;
         }
         int result = 1;
         for (int i = 1; i < length - 1; i++) {
-            result *= segmentNums[i];
-            System.out.print(segmentNums[i]);
+            result *= multipliers[i];
+            System.out.print(multipliers[i]);
             System.out.print(i == length - 2 ? " = " + result : " * ");
         }
     }
 
     private static void deleteArrayElements() {
         System.out.println("\n\n3. Удаление элементов массива");
-        float[] randomFloatNums = new float[15];
+        float[] randomFloats = new float[15];
         Random rnd = new Random();
-        int length = randomFloatNums.length;
+        int length = randomFloats.length;
         for (int i = 0; i < length; i++) {
-            randomFloatNums[i] = rnd.nextFloat();
+            randomFloats[i] = rnd.nextFloat();
         }
-        float middleIndexNum = randomFloatNums[length / 2];
+        float middleIndexNum = randomFloats[length / 2];
 
         System.out.print("Исходный массив: \n");
-        printArray(randomFloatNums);
+        printArray(randomFloats);
 
         int amountDeletedCells = 0;
         for (int i = 0; i < length; i++) {
-            if (randomFloatNums[i] > middleIndexNum) {
-                randomFloatNums[i] = 0;
+            if (randomFloats[i] > middleIndexNum) {
+                randomFloats[i] = 0;
                 amountDeletedCells++;
             }
         }
 
         System.out.print("\n\nИзмененный массив: \n");
-        printArray(randomFloatNums);
+        printArray(randomFloats);
 
         System.out.println("\n\nКоличество обнуленных ячеек: " + amountDeletedCells);
     }
 
     private static void displayAlphabetLadder() {
         System.out.println("\n4. Вывод алфавита лесенкой");
-        char[] alphabetCapitalLetters = new char[26];
-        int length = alphabetCapitalLetters.length;
+        char[] alphabet = new char[26];
+        int length = alphabet.length;
         for (int i = 0; i < length; i++) {
-            alphabetCapitalLetters[i] = (char) ('A' + i);
+            alphabet[i] = (char) ('A' + i);
         }
         for (int i = length - 1; i >= 0; i--) {
             for (int j = length - 1; j >= i; j--) {
-                System.out.print(alphabetCapitalLetters[j]);
+                System.out.print(alphabet[j]);
             }
             System.out.println();
         }
@@ -94,42 +94,41 @@ public class ArraysTheme {
         for (int i = 0; i < length; i++) {
             boolean isUnique = false;
             while (!isUnique) {
-                int randomSegmentNum = random.nextInt(60, 100);
-                for (int j = 0; j < length; j++) {
-                    if (randomSegmentNum == uniqueNums[j] && i != j) {
+                int randomNum = random.nextInt(60, 100);
+                for (int j = 0; j <= i; j++) {
+                    if (randomNum == uniqueNums[j] && i != j) {
                         break;
                     }
-                    if (j == length - 1) {
+                    if (j == i) {
                         isUnique = true;
-                        uniqueNums[i] = randomSegmentNum;
+                        uniqueNums[i] = randomNum;
                     }
                 }
             }
         }
         Arrays.sort(uniqueNums);
-        int numCounter = 0;
-        for (int num: uniqueNums) {
-            numCounter++;
-            System.out.print(num);
-            System.out.print(num != uniqueNums[length-1] ? ", " : ".");
-            if (numCounter % 10 == 0) {
+        for (int i = 0; i < length; i++) {
+            System.out.print(uniqueNums[i]);
+            System.out.print(uniqueNums[i] != uniqueNums[length - 1] ? ", " : ".");
+            if (i % 10 == 9) {
                 System.out.println();
             }
         }
     }
 
     private static void printArray(int[] array) {
-        for (int num: array) {
+        for (int num : array) {
             System.out.print(num);
             System.out.print(num == array[array.length - 1] ? "]" : ", ");
         }
     }
 
     private static void printArray(float[] array) {
-        for (int i = 0; i < array.length; i++) {
+        int length = array.length;
+        for (int i = 0; i < length; i++) {
             System.out.printf("%.3f", array[i]);
-            System.out.print(i == array.length - 1 ? "." : ", ");
-            if (array[i] == array[array.length / 2]) {
+            System.out.print(i == length - 1 ? "." : ", ");
+            if (array[i] == array[length / 2]) {
                 System.out.println();
             }
         }
