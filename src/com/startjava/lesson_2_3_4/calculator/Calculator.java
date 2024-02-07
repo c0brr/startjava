@@ -5,18 +5,6 @@ class Calculator {
     private int num2;
     private String operation;
 
-    public int getNum1() {
-        return num1;
-    }
-
-    public int getNum2() {
-        return  num2;
-    }
-
-    public String getOperation() {
-        return operation;
-    }
-
     public double calculate(String mathExpression) {
         String[] elements = mathExpression.split(" ");
         num1 = Integer.parseInt(elements[0]);
@@ -37,6 +25,16 @@ class Calculator {
                 return Math.pow(num1, num2);
             default:
                 return Double.MIN_VALUE;
+        }
+    }
+
+    public void printResult(String mathExpression) {
+        double result = calculate(mathExpression);
+        if (result == Double.MIN_VALUE) {
+            System.out.println("Ошибка: знак " + operation + " не поддерживается");
+        } else {
+            System.out.print(num1 + " " + operation + " " + num2 + " = ");
+            System.out.print(result - (int) result == 0 ? (int) result + "\n" : String.format("%.3f\n", result));
         }
     }
 }
