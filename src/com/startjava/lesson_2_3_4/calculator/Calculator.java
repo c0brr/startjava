@@ -4,42 +4,16 @@ class Calculator {
     private static int num1;
     private static int num2;
     private static String operation;
-    private static boolean hasException;
 
-    public static void setHasException(boolean hasException) {
-        Calculator.hasException = hasException;
-    }
-
-    public static void printResult(double result) {
-        if (!hasException) {
-            System.out.print(num1 + " " + operation + " " + num2 + " = ");
-            System.out.print(result - (int) result == 0 ? (int) result + "\n" : String.format("%.3f\n", result));
-        }
-    }
-
-    public static double calculate(String mathExpression) {
+    public static double calculate(String mathExpression) throws RuntimeException {
         String[] elements = mathExpression.split(" ");
-        RuntimeException formatError = new RuntimeException("Ошибка: формат выражения неверен");
-        RuntimeException integerNumError = new RuntimeException("Ошибка: один либо оба члена выражения " +
-                "не являются положительными целыми числами");
-        RuntimeException operationError = new RuntimeException("Ошибка: введенная математическая " +
-                "операция не поддерживается");
-
         if (elements.length != 3) {
-            hasException = true;
-            throw formatError;
+            throw new RuntimeException("Ошибка: формат выражения неверен");
         } else {
-            try {
-                num1 = Integer.parseInt(elements[0]);
-                num2 = Integer.parseInt(elements[2]);
-            } catch (RuntimeException exception) {
-                hasException = true;
-                throw new RuntimeException(integerNumError);
-            }
-
-            checkPositiveNum(num1);
-            checkPositiveNum(num2);
-
+            checkElement(elements[0]);
+            num1 = Integer.parseInt(elements[0]);
+            checkElement(elements[2]);
+            num2 = Integer.parseInt(elements[2]);
             operation = elements[1];
             return switch (operation) {
                 case "+" -> num1 + num2;
@@ -48,20 +22,19 @@ class Calculator {
                 case "/" -> (double) num1 / num2;
                 case "%" -> num1 % num2;
                 case "^" -> Math.pow(num1, num2);
-                default -> {
-                    hasException = true;
-                    throw operationError;
-                }
+                default -> throw new RuntimeException("Ошибка: математическая операция не поддерживается");
             };
         }
     }
 
-    private static void checkPositiveNum(int num) {
-        RuntimeException positiveNumError = new RuntimeException("Ошибка: один либо оба члена выражения не являются " +
-                "положительными числами");
-        if (num <= 0) {
-            hasException = true;
-            throw positiveNumError;
+    private static void checkElement(String element) {
+        try {
+            int num = Integer.parseInt(element);
+            if (num <= 0) {
+                throw new RuntimeException("Ошибка: " + element + " не является положительным целым числом");
+            }
+        } catch (RuntimeException exception) {
+            throw new RuntimeException("Ошибка: " + element + " не является положительным целым числом");
         }
     }
 }

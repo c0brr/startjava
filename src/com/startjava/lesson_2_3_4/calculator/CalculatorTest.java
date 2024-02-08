@@ -11,16 +11,21 @@ public class CalculatorTest {
             if (answer.equals("yes")) {
                 try {
                     System.out.print("Введите математическое выражение: ");
-                    double result = Calculator.calculate(scanner.nextLine());
-                    Calculator.printResult(result);
+                    String mathExpression = scanner.nextLine();
+                    double result = Calculator.calculate(mathExpression);
+                    printResult(mathExpression, result);
                 } catch (RuntimeException exception) {
-                    System.out.println(exception);
+                    System.out.println(exception.getMessage());
                 }
-                Calculator.setHasException(false);
             }
             System.out.print("Хотите продолжить вычисления? [yes/no]: ");
             answer = scanner.nextLine();
         }
         scanner.close();
     }
+
+    public static void printResult(String mathExpression, double result) {
+            System.out.print(mathExpression + " = ");
+            System.out.print(result - (int) result == 0 ? (int) result + "\n" : String.format("%.3f\n", result));
+        }
 }
