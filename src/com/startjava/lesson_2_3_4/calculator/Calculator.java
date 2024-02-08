@@ -6,73 +6,62 @@ class Calculator {
     private static String operation;
     private static boolean hasException;
 
-    public static void printResult(String mathExpression) {
-        try {
-            double result = calculate(mathExpression);
-            if (!hasException) {
-                System.out.print(num1 + " " + operation + " " + num2 + " = ");
-                System.out.print(result - (int) result == 0 ? (int) result + "\n" : String.format("%.3f\n", result));
-            }
-        } catch (RuntimeException exception) {
-            System.out.println("Ошибка: математическая операция не поддерживается");
-        }
-        hasException = false;
+    public static void setHasException(boolean hasException) {
+        Calculator.hasException = hasException;
     }
 
-    private static double calculate(String mathExpression) {
+    public static void printResult(double result) {
+        if (!hasException) {
+            System.out.print(num1 + " " + operation + " " + num2 + " = ");
+            System.out.print(result - (int) result == 0 ? (int) result + "\n" : String.format("%.3f\n", result));
+        }
+    }
+
+    public static double calculate(String mathExpression) {
         String[] elements = mathExpression.split(" ");
+        RuntimeException formatError = new RuntimeException("Ошибка: формат выражения неверен");
+        RuntimeException integerNumError = new RuntimeException("Ошибка: один либо оба члена выражения " +
+                "не являются положительными целыми числами");
+        RuntimeException operationError = new RuntimeException("Ошибка: введенная математическая " +
+                "операция не поддерживается");
+
         if (elements.length != 3) {
-            try {
-                throw new RuntimeException();
-            } catch (RuntimeException exception) {
-                System.out.println("Ошибка: формат выражения неверен");
-                hasException = true;
-            }
+            hasException = true;
+            throw formatError;
         } else {
             try {
                 num1 = Integer.parseInt(elements[0]);
-                if (num1 <= 0) {
-                    try {
-                        throw new RuntimeException();
-                    } catch (RuntimeException exception) {
-                        printTermError("первый член выражения");
-                        hasException = true;
-                    }
-                }
-            } catch (RuntimeException exception) {
-                printTermError("первый член выражения");
-                hasException = true;
-            }
-
-            try {
                 num2 = Integer.parseInt(elements[2]);
-                if (num2 <= 0) {
-                    try {
-                        throw new RuntimeException();
-                    } catch (RuntimeException exception) {
-                        printTermError("второй член выражения");
-                        hasException = true;
-                    }
-                }
             } catch (RuntimeException exception) {
-                printTermError("второй член выражения");
                 hasException = true;
+                throw new RuntimeException(integerNumError);
             }
-        }
 
-        operation = elements[1];
-        return switch (operation) {
-            case "+" -> num1 + num2;
-            case "-" -> num1 - num2;
-            case "*" -> num1 * num2;
-            case "/" -> (double) num1 / num2;
-            case "%" -> num1 % num2;
-            case "^" -> Math.pow(num1, num2);
-            default -> throw new RuntimeException();
-        };
+            checkPositiveNum(num1);
+            checkPositiveNum(num2);
+
+            operation = elements[1];
+            return switch (operation) {
+                case "+" -> num1 + num2;
+                case "-" -> num1 - num2;
+                case "*" -> num1 * num2;
+                case "/" -> (double) num1 / num2;
+                case "%" -> num1 % num2;
+                case "^" -> Math.pow(num1, num2);
+                default -> {
+                    hasException = true;
+                    throw operationError;
+                }
+            };
+        }
     }
 
-    private static void printTermError(String term) {
-        System.out.println("Ошибка: " + term + " не яляется целым положительным числом");
+    private static void checkPositiveNum(int num) {
+        RuntimeException positiveNumError = new RuntimeException("Ошибка: один либо оба члена выражения не являются " +
+                "положительными числами");
+        if (num <= 0) {
+            hasException = true;
+            throw positiveNumError;
+        }
     }
 }

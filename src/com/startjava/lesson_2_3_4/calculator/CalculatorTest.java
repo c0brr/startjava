@@ -9,8 +9,14 @@ public class CalculatorTest {
 
         while (!answer.equals("no")) {
             if (answer.equals("yes")) {
-                System.out.print("Введите математическое выражение: ");
-                Calculator.printResult(scanner.nextLine());
+                try {
+                    System.out.print("Введите математическое выражение: ");
+                    double result = Calculator.calculate(scanner.nextLine());
+                    Calculator.printResult(result);
+                } catch (RuntimeException exception) {
+                    System.out.println(exception);
+                }
+                Calculator.setHasException(false);
             }
             System.out.print("Хотите продолжить вычисления? [yes/no]: ");
             answer = scanner.nextLine();
