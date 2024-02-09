@@ -3,6 +3,8 @@ package com.startjava.lesson_2_3_4.guess;
 class Player {
     private String name;
     private int num;
+    private int[] inputedNums = new int[10];
+    private int amountAttempts = 10;
 
     public Player(String name) {
         this.name = name;
@@ -18,5 +20,17 @@ class Player {
 
     public int getNum() {
         return num;
+    }
+
+    public int[] getInputedNums() {
+        return inputedNums;
+    }
+
+    public void setAmountAttempts(int amountAttempts) {
+        this.amountAttempts = amountAttempts;
+    }
+
+    public int getAmountAttempts() {
+        return amountAttempts;
     }
 }

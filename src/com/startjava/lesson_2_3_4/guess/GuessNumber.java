@@ -2,43 +2,71 @@ package com.startjava.lesson_2_3_4.guess;
 
 import java.util.Scanner;
 import java.util.Random;
+import java.util.Arrays;
 
 class GuessNumber {
+    private Player firstPlayer;
+    private Player secondPlayer;
     private int secretNum;
-    private Player player1;
-    private Player player2;
 
-    public GuessNumber(Player player1, Player player2) {
+    public GuessNumber(String firstPlayerName, String secondPlayerName) {
         Random random = new Random();
         secretNum = random.nextInt(1, 101);
-        this.player1 = player1;
-        this.player2 = player2;
+        firstPlayer = new Player(firstPlayerName);
+        secondPlayer = new Player(secondPlayerName);
     }
 
     public void play() {
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
+        System.out.println("\nИгра началась! У каждого игрока по 10 попыток.");
+        int[] copyFirstPlayerInputedNums = new int[0];
+        int[] copySecondPlayerInputedNums = new int[0];
+        for (int i = 0; secondPlayer.getAmountAttempts() != 0; i++) {
             // Попытка первого игрока
-            System.out.println("\nПопытка игрока " + player1.getName() + ": ");
-            player1.setNum(scanner.nextInt());
-            if (player1.getNum() == secretNum) {
-                System.out.println("\nИгра окончена. " + player1.getName() + " победил!\n");
-                return;
+            tryGuess(firstPlayer, i);
+            copySecondPlayerInputedNums = Arrays.copyOf(firstPlayer.getInputedNums(), i + 1);
+            if (firstPlayer.getNum() == secretNum) {
+                break;
             }
-            System.out.print("Число " + player1.getNum());
-            System.out.print(player1.getNum() > secretNum ? " больше " : " меньше ");
-            System.out.println("того, что загадал компьютер.");
 
             // Попытка второго игрока
-            System.out.println("\nПопытка игрока " + player2.getName() + ": ");
-            player2.setNum(scanner.nextInt());
-            if (player2.getNum() == secretNum) {
-                System.out.println("\nИгра окончена. " + player2.getName() + " победил!\n");
-                return;
+            tryGuess(secondPlayer, i);
+            copySecondPlayerInputedNums = Arrays.copyOf(secondPlayer.getInputedNums(), i + 1);
+            if (secondPlayer.getNum() == secretNum) {
+                break;
             }
-            System.out.print("Число " + player2.getNum());
-            System.out.print(player2.getNum() > secretNum ? " больше " : " меньше ");
-            System.out.println("того, что загадал компьютер.");
+        }
+
+        // Вывод введенных игроками чисел
+        printInputedNums(firstPlayer, copyFirstPlayerInputedNums);
+        printInputedNums(secondPlayer, copySecondPlayerInputedNums);
+        System.out.println("\n");
+    }
+
+    private void tryGuess(Player player, int index) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nПопытка игрока " + player.getName() + ": ");
+        player.setNum(scanner.nextInt());
+        player.getInputedNums()[index] = player.getNum();
+        player.setAmountAttempts(player.getAmountAttempts() - 1);
+        if (player.getNum() == secretNum) {
+            System.out.println("\nИгрок " + player.getName() + " угадал " + secretNum + " с " +
+                    (10 - player.getAmountAttempts()) + " попытки\n");
+            return;
+        }
+        System.out.print("Число " + player.getNum());
+        System.out.print(player.getNum() > secretNum ? " больше " : " меньше ");
+        System.out.println("того, что загадал компьютер.");
+        if (player.getAmountAttempts() == 0) {
+            System.out.println("У " + player.getName() + " закончились попытки");
+        } else {
+            System.out.println("У " + player.getName() + " осталось " + player.getAmountAttempts() + " попыток");
+        }
+    }
+
+    private void printInputedNums(Player player, int[] copyInputedNums) {
+        System.out.print("\nЧисла, введенные игроком " + player.getName() + ": ");
+        for (int inputedNum : copyInputedNums) {
+            System.out.print(inputedNum + " ");
         }
     }
 }
