@@ -24,8 +24,8 @@ public class CalculatorTest {
         scanner.close();
     }
 
-    public static void printResult(String mathExpression, double result) {
-            System.out.print(mathExpression + " = ");
-            System.out.print(result - (int) result == 0 ? (int) result + "\n" : String.format("%.3f\n", result));
-        }
+    private static void printResult(String mathExpression, double result) {
+        System.out.print(mathExpression + " = ");
+        System.out.print(result - (int) result == 0 ? (int) result + "\n" : String.format("%.3f\n", result));
+    }
 }
