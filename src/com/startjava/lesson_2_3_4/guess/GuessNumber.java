@@ -2,7 +2,6 @@ package com.startjava.lesson_2_3_4.guess;
 
 import java.util.Scanner;
 import java.util.Random;
-import java.util.Arrays;
 
 class GuessNumber {
     private Player firstPlayer;
@@ -16,37 +15,36 @@ class GuessNumber {
         secondPlayer = new Player(secondPlayerName);
     }
 
+    public Player getFirstPlayer() {
+        return firstPlayer;
+    }
+
+    public Player getSecondPlayer() {
+        return secondPlayer;
+    }
+
     public void play() {
         System.out.println("\nИгра началась! У каждого игрока по 10 попыток.");
-        int[] copyFirstPlayerInputedNums = new int[0];
-        int[] copySecondPlayerInputedNums = new int[0];
         for (int i = 0; secondPlayer.getAmountAttempts() != 0; i++) {
             // Попытка первого игрока
             tryGuess(firstPlayer, i);
-            copySecondPlayerInputedNums = Arrays.copyOf(firstPlayer.getInputedNums(), i + 1);
             if (firstPlayer.getNum() == secretNum) {
                 break;
             }
 
             // Попытка второго игрока
             tryGuess(secondPlayer, i);
-            copySecondPlayerInputedNums = Arrays.copyOf(secondPlayer.getInputedNums(), i + 1);
             if (secondPlayer.getNum() == secretNum) {
                 break;
             }
         }
-
-        // Вывод введенных игроками чисел
-        printInputedNums(firstPlayer, copyFirstPlayerInputedNums);
-        printInputedNums(secondPlayer, copySecondPlayerInputedNums);
-        System.out.println("\n");
     }
 
     private void tryGuess(Player player, int index) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nПопытка игрока " + player.getName() + ": ");
         player.setNum(scanner.nextInt());
-        player.getInputedNums()[index] = player.getNum();
+        player.fillInputedNums(index);
         player.setAmountAttempts(player.getAmountAttempts() - 1);
         if (player.getNum() == secretNum) {
             System.out.println("\nИгрок " + player.getName() + " угадал " + secretNum + " с " +
@@ -60,13 +58,6 @@ class GuessNumber {
             System.out.println("У " + player.getName() + " закончились попытки");
         } else {
             System.out.println("У " + player.getName() + " осталось " + player.getAmountAttempts() + " попыток");
-        }
-    }
-
-    private void printInputedNums(Player player, int[] copyInputedNums) {
-        System.out.print("\nЧисла, введенные игроком " + player.getName() + ": ");
-        for (int inputedNum : copyInputedNums) {
-            System.out.print(inputedNum + " ");
         }
     }
 }

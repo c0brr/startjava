@@ -33,4 +33,8 @@ class Player {
     public int getAmountAttempts() {
         return amountAttempts;
     }
+
+    public void fillInputedNums(int index) {
+        inputedNums[index] = num;
+    }
 }
