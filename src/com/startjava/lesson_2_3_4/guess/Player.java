@@ -3,35 +3,53 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Arrays;
 
 class Player {
-    private String name;
-    private int[] enteredNums = new int[10];
-    private int attemptsCounter;
+    private final int[] enteredNums = new int[10];
+    private final String name;
+    private int attempts;
+    private int roundsWon;
 
     public Player(String name) {
         this.name = name;
+    }
+
+    public int getEnteredNum() {
+        return enteredNums[attempts - 1];
     }
 
     public String getName() {
         return name;
     }
 
-    public void setEnteredNum(int index, int num) {
-        enteredNums[index] = num;
+    public void setAttemptsToZero() {
+        attempts = 0;
     }
 
-    public int getEnteredNum(int index) {
-        return enteredNums[index];
+    public int getAttempts() {
+        return attempts;
     }
 
-    public void setAttemptsCounter(int attemptsCounter) {
-        this.attemptsCounter = attemptsCounter;
+    public void incrementRoundsWon() {
+        roundsWon++;
     }
 
-    public int[] getEnteredNumsCopy() {
-        return Arrays.copyOf(enteredNums, attemptsCounter + 1);
+    public int getRoundsWon() {
+        return roundsWon;
+    }
+
+    public boolean addEnteredNum(int num) {
+        if (num < 1 || num > 100) {
+            System.out.println("Введенное вами число выходит за рамки дозволенного интервала. Попробуйте еще раз: ");
+            return false;
+        }
+        enteredNums[attempts++] = num;
+        return true;
+    }
+
+    public int[] getAllNums() {
+        return Arrays.copyOf(enteredNums, attempts);
     }
 
     public void clearEnteredNums() {
-        Arrays.fill(enteredNums, 0, attemptsCounter + 1, 0);
+        Arrays.fill(enteredNums, 0, attempts, 0);
     }
 }
