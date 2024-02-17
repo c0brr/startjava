@@ -3,8 +3,8 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Arrays;
 
 class Player {
-    private static final int MIN_ACCEPTBLE_NUM = 1;
-    private static final int MAX_ACCEPTBLE_NUM = 100;
+    public static final int BOTTOM_BOUND = 1;
+    public static final int UPPER_BOUND = 100;
     private final int[] enteredNums = new int[10];
     private final String name;
     private int attempts;
@@ -35,7 +35,7 @@ class Player {
     }
 
     public boolean addEnteredNum(int num) {
-        if (num < MIN_ACCEPTBLE_NUM || num > MAX_ACCEPTBLE_NUM) {
+        if (num < BOTTOM_BOUND || num > UPPER_BOUND) {
             System.out.println("Введенное вами число выходит за рамки дозволенного интервала. Попробуйте еще раз: ");
             return false;
         }
