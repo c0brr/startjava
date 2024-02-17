@@ -5,8 +5,8 @@ import java.util.Random;
 
 class GuessNumber {
     public static final int AMOUNT_PLAYERS = 3;
+    public static final int MAX_ATTEMPTS = 10;
     private static final int MAX_ROUNDS = 3;
-    private static final int MAX_ATTEMPTS = 10;
     private final Player[] players = new Player[AMOUNT_PLAYERS];
     private final Random random = new Random();
     private final Scanner scanner = new Scanner(System.in);
@@ -14,7 +14,7 @@ class GuessNumber {
     private boolean isSecretNumGuessed;
 
     public GuessNumber(String[] names) {
-        for (int i = 0; i < players.length; i++) {
+        for (int i = 0; i < AMOUNT_PLAYERS; i++) {
             players[i] = new Player(names[i]);
         }
     }
@@ -27,10 +27,11 @@ class GuessNumber {
             for (int j = 0; j < MAX_ATTEMPTS && !isSecretNumGuessed; j++) {
                 for (Player player : players) {
                     inputNum(player);
-                    isSecretNumGuessed = checkNum(player);
+                    isSecretNumGuessed = isGuessed(player);
                     if (isSecretNumGuessed) {
                         break;
                     }
+                    checkAmountAttempts(player);
                 }
             }
 
@@ -47,17 +48,16 @@ class GuessNumber {
 
     private void drawPlayers() {
         System.out.println("Жеребьевка...");
-        Player player;
-        for (int i = players.length; i > 0; i--) {
+        for (int i = AMOUNT_PLAYERS; i > 0; i--) {
             int index = random.nextInt(i);
-            player = players[index];
+            Player player = players[index];
             players[index] = players[i - 1];
             players[i - 1] = player;
         }
         System.out.print("Игроки угадывают числа в порядке следующей очереди: ");
-        for (int i = 0; i < players.length; i++) {
+        for (int i = 0; i < AMOUNT_PLAYERS; i++) {
             System.out.print(players[i].getName());
-            System.out.print(i == players.length - 1 ? ".\n" : ", ");
+            System.out.print(i == AMOUNT_PLAYERS - 1 ? ".\n" : ", ");
         }
     }
 
@@ -69,20 +69,24 @@ class GuessNumber {
         }
     }
 
-    private boolean checkNum(Player player) {
-        if (player.getEnteredNum() == secretNum) {
+    private boolean isGuessed(Player player) {
+        int playerNum = player.getEnteredNum();
+        if (playerNum == secretNum) {
             System.out.println("\nИгрок " + player.getName() + " угадал " +
                     secretNum + " с " + player.getAttempts() + " попытки");
             player.incrementCountWins();
             return true;
         }
-        System.out.print("Число " + player.getEnteredNum());
-        System.out.print(player.getEnteredNum() > secretNum ? " больше " : " меньше ");
+        System.out.print("Число " + playerNum);
+        System.out.print(playerNum > secretNum ? " больше " : " меньше ");
         System.out.println("того, что загадал компьютер.");
+        return false;
+    }
+
+    private void checkAmountAttempts(Player player) {
         if (player.getAttempts() == MAX_ATTEMPTS) {
             System.out.println("У " + player.getName() + " закончились попытки");
         }
-        return false;
     }
 
     private void printEnteredNums(String name, int[] enteredNums) {
@@ -99,7 +103,7 @@ class GuessNumber {
         for (Player player : players) {
             if (player.getCountWins() > 0) {
                 if (player.getCountWins() > 1) {
-                    System.out.print("победил " + player.getName() + "\n\n");
+                    System.out.println("победил " + player.getName() + "\n");
                     return;
                 }
                 countWinners++;
@@ -107,9 +111,9 @@ class GuessNumber {
             }
         }
         if (countWinners != 1) {
-            System.out.print("победитель не выявлен\n\n");
+            System.out.println("победитель не выявлен\n");
         } else {
-            System.out.print("победил " + winner + "\n\n");
+            System.out.println("победил " + winner + "\n");
         }
     }
 }

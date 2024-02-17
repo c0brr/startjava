@@ -24,7 +24,7 @@ public class GuessNumberTest {
     }
 
     private static void inputNames(String[] names) {
-        for (int i = 0; i < names.length; i++) {
+        for (int i = 0; i < GuessNumber.AMOUNT_PLAYERS; i++) {
             System.out.println("Ведите имя " + (i + 1) + " игрока: ");
             names[i] = scanner.nextLine();
         }

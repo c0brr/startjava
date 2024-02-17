@@ -5,7 +5,7 @@ import java.util.Arrays;
 class Player {
     public static final int BOTTOM_BOUND = 1;
     public static final int UPPER_BOUND = 100;
-    private final int[] enteredNums = new int[10];
+    private final int[] enteredNums = new int[GuessNumber.MAX_ATTEMPTS];
     private final String name;
     private int attempts;
     private int countWins;
