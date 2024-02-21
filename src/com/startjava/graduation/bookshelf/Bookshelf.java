@@ -24,12 +24,8 @@ class Bookshelf {
         return Arrays.copyOf(books, amountBooks);
     }
 
-    public void add(String bookInfo) {
-        try {
-            books[amountBooks] = new Book(bookInfo);
-        } catch (RuntimeException exception) {
-            throw new RuntimeException(exception.getMessage());
-        }
+    public void add(Book book) {
+        books[amountBooks] = book;
         if (books[amountBooks].getInfoLength() > maxInfoLength) {
             maxInfoLength = books[amountBooks].getInfoLength();
         }
@@ -46,27 +42,30 @@ class Bookshelf {
     }
 
     public boolean delete(String title) {
-        int maxIndex = amountBooks - 1;
-        for (int i = 0; i <= maxIndex; i++) {
+        for (int i = 0; i < amountBooks; i++) {
             if (books[i].getTitle().equals(title)) {
                 if (books[i].getInfoLength() == maxInfoLength) {
-                    maxInfoLength = 0;
-                    for (int j = 0; j <= maxIndex; j++) {
-                        int infoLength = books[j].getInfoLength();
-                        if (infoLength > maxInfoLength && j != i) {
-                            maxInfoLength = infoLength;
-                        }
-                    }
+                    researchMaxInfoLength(i);
                 }
-                if (i != maxIndex) {
-                    System.arraycopy(books, i + 1, books, i, maxIndex - i);
-                }
-                books[maxIndex] = null;
                 amountBooks--;
+                if (i != amountBooks) {
+                    System.arraycopy(books, i + 1, books, i, amountBooks - i);
+                }
+                books[amountBooks] = null;
                 return true;
             }
         }
         return false;
+    }
+
+    private void researchMaxInfoLength(int outerIndex) {
+        maxInfoLength = 0;
+        for (int i = 0; i < amountBooks; i++) {
+            int currentInfoLength = books[i].getInfoLength();
+            if (currentInfoLength > maxInfoLength && i != outerIndex) {
+                maxInfoLength = currentInfoLength;
+            }
+        }
     }
 
     public void clear() {

@@ -1,6 +1,7 @@
 package com.startjava.graduation.bookshelf;
 
 class Book {
+    public static final int ACCEPTABLE_LENGTH = 3;
     private final String author;
     private final String title;
     private final String yearPublication;
@@ -8,7 +9,7 @@ class Book {
 
     public Book(String info) {
         String[] infoElements = info.split("::");
-        if (infoElements.length != 3) {
+        if (infoElements.length != ACCEPTABLE_LENGTH) {
             throw new RuntimeException("Ошибка: вы ввели неверный формат книги.");
         }
         author = infoElements[0];

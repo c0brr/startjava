@@ -8,7 +8,9 @@ public class BookshelfTest {
 
     public static void main(String[] args) {
         Bookshelf bookshelf = new Bookshelf();
-        String menu = """
+        while (!isProgramClosed) {
+            printBookshelf(bookshelf);
+            System.out.print("""
                        Меню
                 1. Сохранить книгу
                 2. Найти книгу
@@ -17,24 +19,8 @@ public class BookshelfTest {
                 5. Завершить
                                 
                 Выбрать команду:
-                """;
-
-        while (!isProgramClosed) {
-            int command = 0;
-            printBookshelf(bookshelf);
-            System.out.print(menu);
-
-            try {
-                command = Integer.parseInt(scanner.nextLine());
-                if (command < 1 || command > 5) {
-                    throw new RuntimeException();
-                }
-            } catch (RuntimeException exception) {
-                System.out.println("Ошибка: введенная команда не поддерживается.");
-            }
-
-            workCommand(command, bookshelf);
-
+                """);
+            workCommand(choiceCommand(), bookshelf);
             if (!isProgramClosed) {
                 do {
                     System.out.println("Для продолжения нажмите Enter. ");
@@ -62,37 +48,33 @@ public class BookshelfTest {
         System.out.printf("|%s|\n\n", " ".repeat(length));
     }
 
-    public static void workCommand(int command, Bookshelf bookshelf) {
+    private static int choiceCommand() {
+        int command = 0;
+        try {
+            command = Integer.parseInt(scanner.nextLine());
+            if (command < 1 || command > 5) {
+                throw new RuntimeException();
+            }
+        } catch (RuntimeException e) {
+            System.out.println("Ошибка: введенная команда не поддерживается.");
+        }
+        return command;
+    }
+
+    private static void workCommand(int command, Bookshelf bookshelf) {
         switch (command) {
             case 1:
                 if (bookshelf.getAmountBooks() < Bookshelf.MAX_BOOKS) {
-                    System.out.println("Введите информацию о книге в следующем формате: " +
-                            "Автор::Название книги::Год издания");
-                    try {
-                        bookshelf.add(scanner.nextLine());
-                        System.out.println("Новая книга добвлена в шкаф.");
-                    } catch (RuntimeException exception) {
-                        System.out.println(exception.getMessage());
-                    }
+                    addBook(bookshelf);
                 } else {
                     System.out.println("Шкаф заполнен. Удалите одну из книг, если хотите добавить новую книгу.");
                 }
                 break;
             case 2:
-                System.out.println("Введите название книги, чтобы найти ее:");
-                try {
-                    System.out.println("Найденная книга: " + bookshelf.find(scanner.nextLine()));
-                } catch (RuntimeException exception) {
-                    System.out.println(exception.getMessage());
-                }
+                findBook(bookshelf);
                 break;
             case 3:
-                System.out.println("Введите название книги, чтобы удалить ее:");
-                if (bookshelf.delete(scanner.nextLine())) {
-                    System.out.println("Выбранная книга удалена.");
-                } else {
-                    System.out.println("Книга не удалена(отсутствует в шкафу).");
-                }
+                deleteBook(bookshelf);
                 break;
             case 4:
                 bookshelf.clear();
@@ -101,6 +83,36 @@ public class BookshelfTest {
             case 5:
                 isProgramClosed = true;
                 System.out.println("Завершение работы.");
+        }
+    }
+
+    private static void addBook(Bookshelf bookshelf) {
+        System.out.println("Введите информацию о книге в следующем формате: " +
+                "Автор::Название книги::Год издания");
+        try {
+            Book book = new Book(scanner.nextLine());
+            bookshelf.add(book);
+            System.out.println("Новая книга добвлена в шкаф.");
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void findBook(Bookshelf bookshelf) {
+        System.out.println("Введите название книги, чтобы найти ее:");
+        try {
+            System.out.println("Найденная книга: " + bookshelf.find(scanner.nextLine()));
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private static void deleteBook(Bookshelf bookshelf) {
+        System.out.println("Введите название книги, чтобы удалить ее:");
+        if (bookshelf.delete(scanner.nextLine())) {
+            System.out.println("Выбранная книга удалена.");
+        } else {
+            System.out.println("Книга не удалена(отсутствует в шкафу).");
         }
     }
 }
