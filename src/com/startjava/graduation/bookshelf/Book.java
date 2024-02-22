@@ -1,7 +1,7 @@
 package com.startjava.graduation.bookshelf;
 
 class Book {
-    public static final int ACCEPTABLE_LENGTH = 3;
+    private static final int ACCEPTABLE_LENGTH = 3;
     private final String author;
     private final String title;
     private final String yearPublication;

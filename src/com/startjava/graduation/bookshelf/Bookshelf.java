@@ -6,17 +6,17 @@ class Bookshelf {
     public static final int MAX_BOOKS = 10;
     private final Book[] books = new Book[MAX_BOOKS];
     private int amountBooks;
-    private int maxInfoLength;
+    private int lengthShelves;
 
     public int getAmountBooks() {
         return amountBooks;
     }
 
-    public int getMaxInfoLength() {
-        return maxInfoLength;
+    public int getLengthShelves() {
+        return lengthShelves;
     }
 
-    public int getEmptyShelfs() {
+    public int getEmptyShelves() {
         return MAX_BOOKS - amountBooks;
     }
 
@@ -25,11 +25,13 @@ class Bookshelf {
     }
 
     public void add(Book book) {
-        books[amountBooks] = book;
-        if (books[amountBooks].getInfoLength() > maxInfoLength) {
-            maxInfoLength = books[amountBooks].getInfoLength();
+        if (amountBooks < MAX_BOOKS) {
+            books[amountBooks] = book;
+            lengthShelves = Math.max(book.getInfoLength(), lengthShelves);
+            amountBooks++;
+            return;
         }
-        amountBooks++;
+        throw new RuntimeException("Шкаф заполнен. Удалите одну из книг, если хотите добавить новую книгу.");
     }
 
     public Book find(String title) {
@@ -44,9 +46,7 @@ class Bookshelf {
     public boolean delete(String title) {
         for (int i = 0; i < amountBooks; i++) {
             if (books[i].getTitle().equals(title)) {
-                if (books[i].getInfoLength() == maxInfoLength) {
-                    researchMaxInfoLength(i);
-                }
+                researchLengthShelves(i);
                 amountBooks--;
                 if (i != amountBooks) {
                     System.arraycopy(books, i + 1, books, i, amountBooks - i);
@@ -58,12 +58,13 @@ class Bookshelf {
         return false;
     }
 
-    private void researchMaxInfoLength(int outerIndex) {
-        maxInfoLength = 0;
-        for (int i = 0; i < amountBooks; i++) {
-            int currentInfoLength = books[i].getInfoLength();
-            if (currentInfoLength > maxInfoLength && i != outerIndex) {
-                maxInfoLength = currentInfoLength;
+    private void researchLengthShelves(int outerIndex) {
+        if (books[outerIndex].getInfoLength() == lengthShelves) {
+            lengthShelves = 0;
+            for (int i = 0; i < amountBooks; i++) {
+                if (i != outerIndex) {
+                    lengthShelves = Math.max(books[i].getInfoLength(), lengthShelves);
+                }
             }
         }
     }
