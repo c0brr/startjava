@@ -3,29 +3,29 @@ package com.startjava.graduation.bookshelf;
 import java.util.Scanner;
 
 public class BookshelfTest {
+    private static final Bookshelf bookshelf = new Bookshelf();
     private static final Scanner scanner = new Scanner(System.in);
     private static boolean isProgramClosed;
 
     public static void main(String[] args) {
-        Bookshelf bookshelf = new Bookshelf();
         while (!isProgramClosed) {
-            printBookshelf(bookshelf);
+            printBookshelf();
             printMenu();
-            workCommand(choiceCommand(), bookshelf);
+            runCommand(choiceCommand());
             inputEnter();
         }
         scanner.close();
     }
 
-    private static void printBookshelf(Bookshelf bookshelf) {
+    private static void printBookshelf() {
         int amountBooks = bookshelf.getAmountBooks();
-        int lengthShelves = bookshelf.getLengthShelves();
         if (amountBooks == 0) {
             System.out.println("Шкаф пуст. Вы можете добавить в него первую книгу.\n");
             return;
         }
         System.out.println("В шкафу книг - " + amountBooks +
                 ", свободно полок - " + bookshelf.getEmptyShelves() + "\n");
+        int lengthShelves = bookshelf.getLengthShelves();
         String dash = "-".repeat(lengthShelves);
         for (Book book : bookshelf.getAllBooks()) {
             String space = " ".repeat(lengthShelves - book.getInfoLength());
@@ -65,16 +65,16 @@ public class BookshelfTest {
         return command;
     }
 
-    private static void workCommand(int command, Bookshelf bookshelf) {
+    private static void runCommand(int command) {
         switch (command) {
             case 1:
-                addBook(bookshelf);
+                addBook();
                 break;
             case 2:
-                findBook(bookshelf);
+                findBook();
                 break;
             case 3:
-                deleteBook(bookshelf);
+                deleteBook();
                 break;
             case 4:
                 bookshelf.clear();
@@ -86,7 +86,7 @@ public class BookshelfTest {
         }
     }
 
-    private static void addBook(Bookshelf bookshelf) {
+    private static void addBook() {
         System.out.println("Введите информацию о книге в следующем формате: " +
                 "Автор::Название книги::Год издания");
         try {
@@ -98,8 +98,8 @@ public class BookshelfTest {
         }
     }
 
-    private static void findBook(Bookshelf bookshelf) {
-        System.out.println("Введите название книги, чтобы найти ее:");
+    private static void findBook() {
+        System.out.println("Введите название искомой книги:");
         try {
             System.out.println("Найденная книга: " + bookshelf.find(scanner.nextLine()));
         } catch (RuntimeException e) {
@@ -107,8 +107,8 @@ public class BookshelfTest {
         }
     }
 
-    private static void deleteBook(Bookshelf bookshelf) {
-        System.out.println("Введите название книги, чтобы удалить ее:");
+    private static void deleteBook() {
+        System.out.println("Введите название удаляемой книги:");
         if (bookshelf.delete(scanner.nextLine())) {
             System.out.println("Выбранная книга удалена.");
         } else {

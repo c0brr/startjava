@@ -26,9 +26,8 @@ class Bookshelf {
 
     public void add(Book book) {
         if (amountBooks < MAX_BOOKS) {
-            books[amountBooks] = book;
+            books[amountBooks++] = book;
             lengthShelves = Math.max(book.getInfoLength(), lengthShelves);
-            amountBooks++;
             return;
         }
         throw new RuntimeException("Шкаф заполнен. Удалите одну из книг, если хотите добавить новую книгу.");
