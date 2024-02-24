@@ -45,27 +45,28 @@ class Bookshelf {
     public boolean delete(String title) {
         for (int i = 0; i < amountBooks; i++) {
             if (books[i].getTitle().equals(title)) {
-                researchLengthShelves(i);
+                int length = books[i].getInfoLength();
                 amountBooks--;
                 if (i != amountBooks) {
                     System.arraycopy(books, i + 1, books, i, amountBooks - i);
                 }
                 books[amountBooks] = null;
+                researchLengthShelves(length);
                 return true;
             }
         }
         return false;
     }
 
-    private void researchLengthShelves(int outerIndex) {
-        if (books[outerIndex].getInfoLength() == lengthShelves) {
-            lengthShelves = 0;
-            for (int i = 0; i < amountBooks; i++) {
-                if (i != outerIndex) {
-                    lengthShelves = Math.max(books[i].getInfoLength(), lengthShelves);
+    private void researchLengthShelves(int length) {
+        if (amountBooks > 0) {
+            if (length == lengthShelves) {
+                lengthShelves = books[0].getInfoLength();
+                for (int i = 1; i < amountBooks; i++) {
+                    lengthShelves = Math.max(lengthShelves, books[i].getInfoLength());
                 }
             }
-        }
+        } else lengthShelves = 0;
     }
 
     public void clear() {
